@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data>
+
+      <record id="gpsi_audit_iaf_view_form" model="ir.ui.view">
+         <field name="name">gpsi.audit.iaf.form</field>
+         <field name="model">gpsi.audit.iaf</field>
+         <field name="arch" type="xml">
+            <form string="Audit IAF">
+               <sheet>
+                  <group>
+                     <field name="standard_id" />
+                     <field name="name" />
+                     <field name="description" />
+                  </group>
+                  <notebook>
+                     <page string="NACE Codes">
+                        <field name="nace_code_ids">
+                           <tree string="NACE Codes">
+                              <field name="name"/>
+                              <field name="description"/>
+                           </tree>
+                        </field>
+                     </page>
+                  </notebook>
+               </sheet>
+            </form>
+         </field>
+      </record>
+
+   </data>
+</openerp>

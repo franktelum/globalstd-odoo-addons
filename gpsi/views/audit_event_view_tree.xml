@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data>
+
+      <record id="gpsi_audit_event_view_tree" model="ir.ui.view">
+         <field name="name">gpsi.audit.event.view.tree</field>
+         <field name="model">gpsi.audit.event</field>
+         <field name="help" type="html">
+             <p>
+                 Click to create a new event.
+             </p>
+         </field>
+         <field name="arch" type="xml">
+            <tree string="Events">
+               <field name="name"/>
+               <field name="contract_id"/>
+               <field name="event_type"/>
+               <field name="date_start"/>
+               <field name="date_end"/>
+               <field name="state"/>
+            </tree>
+         </field>
+      </record>
+
+   </data>
+</openerp>

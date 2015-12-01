@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data>
+
+      <record id="act_gpsi_contract_2_audit_event_all" model="ir.actions.act_window">
+            <field name="name">Events</field>
+            <field name="res_model">gpsi.audit.event</field>
+            <field name="view_mode">tree,form,calendar</field>
+            <field name="context">{
+                'search_default_contract_id': [active_id],
+                'default_contract_id': active_id,
+            }</field>
+            <field name="search_view_id" ref="gpsi_audit_event_view_search_form"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Here, you can create new audit events
+                </p>
+            </field>
+        </record>
+
+      <record id="gpsi_contract_view_form" model="ir.ui.view">
+         <field name="name">gpsi.contract.form</field>
+         <field name="model">gpsi.contract</field>
+         <field name="arch" type="xml">
+            <form string="Contract">
+               <header>
+                  <field name="state" widget="statusbar" />
+               </header>
+               <sheet>
+                  <div class="oe_button_box" name="button_box">
+                     <button  class="oe_stat_button" name="%(act_gpsi_contract_2_audit_event_all)d"  type="action" icon="fa-files-o">
+                        <field string="Events" name="audit_event_count" widget="statinfo"/>
+                     </button>
+                  </div>
+                  <div class="oe_title">
+                     <h1>
+                        <field name="name" readonly="1"/>
+                     </h1>
+                  </div>
+                  <group>
+                     <group>
+                        <field name="client_id" />
+                        <field name="standard" />
+                        <field name="cycle" />
+                        <field name="range_employees" />
+                        <field name="risk_level" />
+                     </group>
+                     <group>
+                        <field name="apply_design" />
+                        <field name="is_multisite" />
+                        <field name="block_contract" />
+                        <field name="need_bilingual_auditor" />
+                     </group>
+                  </group>
+                  <group>
+                     <field name="special_notes" />
+                  </group>
+                  <group string="Events">
+                     <group>
+                        <field name="certification_type" />
+                        <field name="scheme" />
+                        <field name="duration" />
+                     </group>
+                     <group>
+                        <field name="report_time" />
+                        <field name="expenses_invoice" />
+                     </group>
+                  </group>
+                  <notebook>
+                     <page string="Order Details">
+                        <field name="order_line_ids">
+                           <tree string="Order Lines">
+                              <field name="product_id" string="Service"/>
+                              <field name="description"/>
+                              <field name="qty" string="Days"/>
+                              <field name="unit_price" string="Cost"/>
+                           </tree>
+                        </field>
+                     </page>
+                     <page string="Certificate">
+                        <group col="4">
+                           <field name="date_certificate_issue" />
+                           <field name="certificate_status" />
+                           <field name="date_certificate_expiration" colspan="4" />
+                           <field name="scope" colspan="4" />
+                        </group>
+                     </page>
+                  </notebook>
+               </sheet>
+               <div class="oe_chatter">
+                  <field name="message_follower_ids" widget="mail_followers"/>
+                  <field name="message_ids" widget="mail_thread"/>
+               </div>
+            </form>
+         </field>
+      </record>
+
+   </data>
+</openerp>

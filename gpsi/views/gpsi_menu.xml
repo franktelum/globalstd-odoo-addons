@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data>
+      <act_window id="action_gpsi_sale_contracts"
+         name="Contracts"
+         res_model="gpsi.contract"
+         view_mode="tree,form">
+      </act_window>
+
+      <act_window id="action_gpsi_sale_quotations"
+         name="Quotations"
+         res_model="gpsi.quotation"
+         view_mode="tree,form">
+      </act_window>
+
+      <act_window id="action_gpsi_audits"
+         name="Audits"
+         res_model="gpsi.audit.event"
+         view_mode="tree,form,calendar">
+      </act_window>
+
+      <act_window id="action_gpsi_standards"
+         name="Standards"
+         res_model="gpsi.audit.standard"
+         view_mode="tree,form">
+      </act_window>
+
+      <act_window id="action_gpsi_iafs"
+         name="IAFS"
+         res_model="gpsi.audit.iaf"
+         view_mode="tree,form">
+      </act_window>
+
+      <act_window id="action_gpsi_nace_codes"
+         name="NACE Codes"
+         res_model="gpsi.audit.nacecode"
+         view_mode="tree,form">
+      </act_window>
+
+      <act_window id="action_gpsi_products"
+         name="Products"
+         res_model="gpsi.product"
+         view_mode="tree,form">
+      </act_window>
+
+      <menuitem id="menu_gpsi_sale_quotations"
+         name="Quotations"
+         parent="base.menu_sales"
+         action="action_gpsi_sale_quotations"
+         sequence="20">
+      </menuitem>
+
+      <menuitem id="menu_gpsi_sale_contracts"
+         name="Contracts"
+         parent="base.menu_sales"
+         action="action_gpsi_sale_contracts"
+         sequence="21">
+      </menuitem>
+
+      <menuitem id="menu_gpsi_sale_config_products"
+         name="Products"
+         parent="base.menu_sale_config"
+         action="action_gpsi_products"
+         sequence="20">
+      </menuitem>
+
+      ########################################################
+      # Audits menu
+
+      <menuitem id="menu_gpsi_audits"
+         name="Audits"
+         sequence="20">
+      </menuitem>
+
+      <menuitem id="menu_gpsi_audits_audits"
+         name="Audits"
+         parent="menu_gpsi_audits"
+         sequence="1">
+      </menuitem>
+
+      <menuitem id="menu_gpsi_audits_audits_events"
+         name="Events"
+         parent="menu_gpsi_audits_audits"
+         action="action_gpsi_audits"
+         sequence="1">
+      </menuitem>
+
+      ########################################################
+      # Configuration submenu
+
+      <menuitem id="menu_gpsi_audits_configuration"
+         name="Configuration"
+         parent="menu_gpsi_audits"
+         sequence="2">
+      </menuitem>
+
+      <menuitem id="menu_gpsi_audits_configuration_catalogs"
+         name="Catalogs"
+         parent="menu_gpsi_audits_configuration"
+         sequence="1">
+      </menuitem>
+
+      <menuitem id="menu_gpsi_audits_configuration_standards"
+         name="Standards"
+         parent="menu_gpsi_audits_configuration_catalogs"
+         action="action_gpsi_standards"
+         sequence="1">
+      </menuitem>
+
+      <menuitem id="menu_gpsi_audits_configuration_iafs"
+         name="IAFS"
+         parent="menu_gpsi_audits_configuration_catalogs"
+         action="action_gpsi_iafs"
+         sequence="2">
+      </menuitem>
+
+      <menuitem id="menu_gpsi_audits_configuration_nace_codes"
+         name="NACE Codes"
+         parent="menu_gpsi_audits_configuration_catalogs"
+         action="action_gpsi_nace_codes"
+         sequence="3">
+      </menuitem>
+
+      ########################################################
+
+   </data>
+</openerp>

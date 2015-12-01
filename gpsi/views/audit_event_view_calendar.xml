@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data>
+
+      <record id="gpsi_audit_event_view_calendar" model="ir.ui.view">
+         <field name="name">gpsi.audit.event.view.calendar</field>
+         <field name="model">gpsi.audit.event</field>
+         <field name="arch" type="xml">
+            <calendar color="state" date_start="date_start" date_end="date_end" string="Events">
+               <field name="name" />
+               <field name="contract_id" />
+            </calendar>
+         </field>
+      </record>
+
+   </data>
+</openerp>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data>
+
+      <record id="act_gpsi_partner_2_contract_all" model="ir.actions.act_window">
+         <field name="name">Contracts</field>
+         <field name="res_model">gpsi.contract</field>
+         <field name="view_mode">tree,form</field>
+         <field name="context">{
+            'search_default_contract_id': [active_id],
+            'default_contract_id': active_id,
+         }</field>
+         <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+               Here, you can create new contract
+            </p>
+         </field>
+      </record>
+
+      <record id="act_gpsi_partner_2_quotation_all" model="ir.actions.act_window">
+         <field name="name">Quotations</field>
+         <field name="res_model">gpsi.quotation</field>
+         <field name="view_mode">tree,form</field>
+         <field name="context">{
+            'search_default_contract_id': [active_id],
+            'default_contract_id': active_id,
+         }</field>
+         <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+               Here, you can create new quotation
+            </p>
+         </field>
+      </record>
+
+      <record id="gpsi_res_partner_view_form" model="ir.ui.view">
+         <field name="name">gpsi.res.partner.form</field>
+         <field name="model">res.partner</field>
+         <field name="inherit_id" ref="base.view_partner_form"></field>
+         <field name="arch" type="xml">
+            <div class="oe_button_box" name="button_box" position="inside">
+               <button  class="oe_stat_button" name="%(act_gpsi_partner_2_quotation_all)d"  type="action" icon="fa-files-o" attrs="{'invisible': [('customer','=', False)]}">
+                  <label string="Quotations" widget="statinfo"/>
+               </button>
+               <button  class="oe_stat_button" name="%(act_gpsi_partner_2_contract_all)d"  type="action" icon="fa-files-o" attrs="{'invisible': [('customer','=', False)]}">
+                  <label string="Contracts" widget="statinfo"/>
+               </button>
+            </div>
+         </field>
+      </record>
+   </data>
+</openerp>
