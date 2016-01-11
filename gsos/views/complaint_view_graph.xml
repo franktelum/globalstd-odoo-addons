@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data>
+
+      <record id="gsos_complaint_view_graph" model="ir.ui.view">
+         <field name="name">gsos.complaint.graph</field>
+         <field name="model">gsos.complaint</field>
+         <field name="arch" type="xml">
+            <graph string="Complaints by Severity">
+               <field name="severity"/>
+               <field name="supplier_id"/>
+            </graph>
+         </field>
+      </record>
+
+   </data>
+</openerp>

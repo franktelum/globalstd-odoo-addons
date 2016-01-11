@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data noupdate="0">
+
+      <record id="module_category_gsos" model="ir.module.category">
+         <field name="name">Gsos</field>
+         <field name="description">Gsos Application</field>
+         <field name="sequence">20</field>
+      </record>
+
+      <record id="group_gsos_user" model="res.groups">
+         <field name="name">User</field>
+         <field name="category_id" ref="gsos.module_category_gsos"/>
+      </record>
+
+      <record id="group_gsos_manager" model="res.groups">
+         <field name="name">Manager</field>
+         <field name="category_id" ref="gsos.module_category_gsos"/>
+         <field name="implied_ids" eval="[(4, ref('gsos.group_gsos_user'))]"/>
+      </record>
+
+   </data>
+</openerp>

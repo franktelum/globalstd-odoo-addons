@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data>
+
+      <record id="gsos_audit_report_section_view_tree" model="ir.ui.view">
+         <field name="name">gsos.audit.report.section.tree</field>
+         <field name="model">gsos.audit.report.section</field>
+         <field name="arch" type="xml">
+            <tree>
+              <field name="supplier_id"/>
+              <field name="checklist_id"/>
+               <field name="name" string="Section"/>
+               <field name="score"/>
+            </tree>
+         </field>
+      </record>
+
+   </data>
+</openerp>
