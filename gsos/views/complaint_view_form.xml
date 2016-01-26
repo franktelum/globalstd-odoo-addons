@@ -8,24 +8,34 @@
          <field name="arch" type="xml">
             <form string="Complaint">
                <header>
-                  <field name="state" widget="statusbar" />
+                  <field name="state" widget="statusbar" clickable="True" />
                </header>
                <sheet>
+                  <field name="id" invisible="1" />
                   <div class="oe_title">
                      <h1>
                         <field name="name" readonly="1"/>
                      </h1>
                   </div>
-                  <group col="4">
-                     <field name="user_id" groups="gsos.group_gsos_manager" colspan="2" />
-                     <newline/>
-                     <field name="monitor" colspan="2" />
-                     <newline/>
-                     <field name="supplier_id" colspan="2" options="{'no_quick_create': True, 'no_create': True}" />
-                     <newline/>
-                     <field name="severity" colspan="2" />
-                     <newline/>
-                     <field name="reason" />
+                  <group>
+                     <group>
+                       <field name="monitor" string="Supervisor" />
+                       <field name="supplier_id" options="{'no_quick_create': True, 'no_create': True}" />
+                     </group>
+                     <group>
+                       <field name="severity" />
+                       <field name="create_date" attrs="{'invisible': [('id', '=', False)]}" readonly="True" />
+                       <field name="__last_update" string='Closed on' attrs="{'invisible': [('state', '!=', 'closed')]}" />
+                     </group>
+                  </group>
+                  <group>
+                     <field name="reason" string="Issue" />
+                  </group>
+                  <group>
+                     <field name="corrective_action" />
+                  </group>
+                  <group>
+                     <field name="auditor_comments" />
                   </group>
                </sheet>
                <div class="oe_chatter">

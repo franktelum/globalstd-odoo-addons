@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data>
+
+      <record id="gsos_audit_report_noconformance_view_tree" model="ir.ui.view">
+         <field name="name">gsos.audit.report.noconformance.tree</field>
+         <field name="model">gsos.audit.report.noconformance</field>
+         <field name="arch" type="xml">
+            <tree>
+              <field name="name" />
+              <field name="audit_id" />
+              <field name="question_id" />
+              <field name="status" />
+            </tree>
+         </field>
+      </record>
+
+   </data>
+</openerp>

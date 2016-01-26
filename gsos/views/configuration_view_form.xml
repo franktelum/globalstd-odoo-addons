@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="gsos_configuration_view_form" model="ir.ui.view">
+            <field name="name">Gsos settings</field>
+            <field name="model">gsos.config.settings</field>
+
+            <field name="arch" type="xml">
+                <form string="Gsos Configuration" class="oe_form_configuration">
+                    <sheet>
+                        <div>
+                            <button string="Apply"
+                                    type="object"
+                                    name="execute"
+                                    class="oe_highlight" />
+                            or
+                            <button string="Cancel"
+                                    type="object"
+                                    name="cancel"
+                                    class="oe_link" />
+                        </div>
+
+                        <group string="Account Settings">
+                            <field name="default_account_id" />
+                            <field name="default_access_key" />
+                            <field name="default_secrete_key" />
+                        </group>
+
+                        <group string="Integration Settings">
+                            <field name="default_integration_interval" />
+                            <field name="default_automatic_flag" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

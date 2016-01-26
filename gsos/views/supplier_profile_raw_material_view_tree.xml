@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data>
+
+      <record id="gsos_supplier_profile_raw_material_view_tree" model="ir.ui.view">
+         <field name="name">gsos.supplier.profile.raw.material.tree</field>
+         <field name="model">gsos.supplier.profile.raw.material</field>
+         <field name="arch" type="xml">
+            <tree string="Raw Materials" editable="top">
+               <field name="material_description" />
+               <field name="supplier_company"/>
+               <field name="city"/>
+               <field name="state"/>
+               <field name="phone"/>
+            </tree>
+         </field>
+      </record>
+
+   </data>
+</openerp>

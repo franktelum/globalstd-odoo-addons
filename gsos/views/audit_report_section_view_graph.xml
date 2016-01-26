@@ -8,8 +8,6 @@
          <field name="arch" type="xml">
             <graph string="Audits">
                 <field name="name" />
-                <field name="supplier_id" />
-                <field name="checklist_id" />
                 <field name="score" type="measure"/>
             </graph>
          </field>

@@ -7,6 +7,6 @@ class GsosChecklist(models.Model):
     _description = 'Checklist'
     _inherit = ['mail.thread']
 
-    name = fields.Char(string='Name', default='New')
-    user_id = fields.Many2one(comodel_name='res.users', string='User')
+    name = fields.Char(string='Name')
     template_url = fields.Char(string='Template')
+    revision = fields.Integer(string='Revision')

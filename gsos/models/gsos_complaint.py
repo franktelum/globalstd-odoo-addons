@@ -8,10 +8,12 @@ class GsosComplaint(models.Model):
     _inherit = ['mail.thread']
 
     name = fields.Char(string='Code', default='New', readonly=True)
-    user_id = fields.Many2one(comodel_name='res.users', string='User')
-    supplier_id = fields.Many2one(comodel_name='res.partner', string='Supplier')
+    supplier_id = fields.Many2one(comodel_name='gsos.supplier.profile', string='Supplier')
     monitor = fields.Char(string='Monitor')
     reason = fields.Text(string='Reason')
+    corrective_action = fields.Text(string='Corrective Action')
+    auditor_comments = fields.Text(string='Auditor Comments')
+    document_count = fields.Integer(compute='_get_document_count', string='Number documents attached')
 
     severity = fields.Selection(
         selection=[
@@ -29,6 +31,10 @@ class GsosComplaint(models.Model):
         string='State',
         default='open')
 
+    def _get_document_count(self):
+        self.ensure_one()
+        attachments = self.env['ir.attachment'].search([['res_id', '=', self.id]])
+        self.document_count = len(attachments)
 
     @api.model
     def create(self, vals):

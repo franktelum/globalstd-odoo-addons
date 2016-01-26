@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <record id="seq_gsos_audit_report_noconformance" model="ir.sequence">
+            <field name="name">Audit Report Nonconformance Sequence</field>
+            <field name="code">gsos.audit.report.noconformance</field>
+            <field name="prefix">ANC-</field>
+            <field name="padding">8</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</openerp>

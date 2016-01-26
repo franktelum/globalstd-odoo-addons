@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data>
+
+      <record id="supplier_profile_view_tree" model="ir.ui.view">
+         <field name="name">gsos.supplier.profile.tree</field>
+         <field name="model">gsos.supplier.profile</field>
+         <field name="arch" type="xml">
+            <tree string="Suppliers">
+               <field name="facility_name"/>
+               <field name="facility_phone" />
+               <field name="facility_email" />
+            </tree>
+         </field>
+      </record>
+
+   </data>
+</openerp>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+   <data>
+      <report id="gsos_audit_final_report_action"
+        string="Final Report"
+        model="gsos.audit"
+        report_type="qweb-pdf"
+        name="gsos.audit_final_report_template" />
+
+      <template id="audit_final_report_template">
+         <t t-call="report.html_container">
+            <t t-foreach="docs" t-as="o">
+               <t>
+                  <div class="page">
+                     <div class="container">
+                        <div class="page-header">
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <h3 style="text-align:center; font-family:Arial; font-weight: bold; color: rgb(35, 83, 130)">ASSESSMENT REPORT</h3>
+                              </div>
+                           </div>
+                        </div>
+                        <div>
+                           <h3 style="font-family:Italic; color: rgb(35, 83, 130)">Supplier Details</h3>
+                        </div>
+                        <div class="row ">
+                          <div class="col-lg-6 col-md-6 col-sm-6">
+                            <h5><strong><t t-esc="o.supplier_id.facility_name" /></strong></h5>
+                            <h5><t t-esc="o.supplier_id.facility_street" /></h5>
+                            <h5><t t-esc="o.supplier_id.facility_street2" /></h5>
+                            <h5><strong>Email: </strong><t t-esc="o.supplier_id.facility_email" /></h5>
+                            <h5><strong>Call: </strong><t t-esc="o.supplier_id.facility_phone" /></h5>
+                          </div>
+                        </div>
+                        <div>
+                           <h3 style="font-family:Italic; color: rgb(35, 83, 130)">Results Summary</h3>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-8">
+                            <div class="panel panel-default">
+                              <div class="panel-body">
+                                <div class="table-responsive">
+                                  <table class="table table-condensed table-striped">
+                                    <thead>
+                                      <tr>
+                                        <td>
+                                          <strong>Section</strong>
+                                        </td>
+                                        <td class="text-center">
+                                          <strong>Result</strong>
+                                        </td>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <t t-set="section_counter" t-value="0" />
+                                      <t t-foreach="o.report_section_ids" t-as="section">
+                                        <tr>
+                                          <td><t t-esc="section.name" /></td>
+                                          <td class="text-center">
+                                            <div class="progress" style="margin-bottom:0">
+                                              <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                                aria-valuemin="0" aria-valuemax="100" t-attf-style="width:{{section.score}}%">
+                                                <t t-esc="section.score" />%
+                                              </div>
+                                            </div>
+                                          </td>
+                                        </tr>
+                                      </t>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                           <h3 style="font-family:Italic; color: rgb(35, 83, 130)">General Comments</h3>
+                        </div>
+                        <t t-foreach="o.report_comment_ids" t-as="c">
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <h4 style="text-align:left; font-family:Italic;color: rgb(0, 94, 94)">
+                                    <t t-esc="c_index + 1" />. <t t-esc="c.name" />
+                                 </h4>
+                              </div>
+                              <div class="row">
+                                 <div class="container">
+                                    <div class="row">
+                                       <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" />
+                                       <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" style="border:1px solid rgb(202, 202, 202); margin-bottom:15px">
+                                          <p style="text-align:justify; font-weight:normal;; font-family:Arial;color: rgb(35, 83, 130); margin:10 0 10">
+                                             <t t-esc="c.comment" />
+                                          </p>
+                                       </div>
+                                       <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" />
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </t>
+                        <div>
+                           <h3 style="font-family:Italic; color: rgb(35, 83, 130)">Questions</h3>
+                        </div>
+                        <t t-foreach="o.report_section_ids" t-as="section">
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <h4 style="text-align:left; font-family:Italic;color: rgb(0, 94, 94)">
+                                    <t t-esc="section_index + 1" />. <t t-esc="section.name" />
+                                 </h4>
+                              </div>
+                              <t t-foreach="section.question_ids" t-as="q">
+                                 <div class="col-md-12">
+                                    <p style="text-align:justify; font-family:Italic; color: rgb(0, 0, 0)">
+                                       <t t-esc="section_index + 1" />.<t t-esc="q_index + 1" />. <t t-esc="q.question" />
+                                       <p />
+                                    </p>
+                                 </div>
+                                 <div class="row">
+                                    <div class="container">
+                                       <div class="row">
+                                          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" />
+                                          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                                             <h3 style="background-color:green; color:white; font-weight:bold; font-size:20px; padding:5px; border-radius: 2px;float:right; margin-top:-1px">
+                                                <t t-esc="q.rating" />
+                                             </h3>
+                                          </div>
+                                          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="border:1px solid rgb(202, 202, 202); margin-bottom:15px">
+                                             <p style="font-family:Italic;font-weight:bold; color: rgb(93, 93, 93); margin:10 0 10">OBSERVATION:</p>
+                                             <p style="text-align:justify; font-weight:normal;; font-family:Arial;color: rgb(35, 83, 130); margin:0 0 10">
+                                                <t t-esc="q.nonconformance_description" />
+                                             </p>
+                                          </div>
+                                          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" />
+                                       </div>
+                                    </div>
+                                 </div>
+                              </t>
+                           </div>
+                        </t>
+                     </div>
+                  </div>
+               </t>
+            </t>
+         </t>
+      </template>
+      
+   </data>
+</openerp>

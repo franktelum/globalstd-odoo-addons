@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data>
+
+      <record id="gsos_audit_report_section_view_pivot" model="ir.ui.view">
+         <field name="name">gsos.audit.graph</field>
+         <field name="model">gsos.audit.report.section</field>
+         <field name="arch" type="xml">
+           <pivot string="Assessments by Sections">
+             <field name="audit_id" type="row" />
+             <field name="name" type="col" />
+             <field name="score" type="measure" />
+           </pivot>
+         </field>
+      </record>
+
+   </data>
+</openerp>

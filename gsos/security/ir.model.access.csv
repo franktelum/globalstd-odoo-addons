@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_gsos_supplier_user,gsos.supplier.user,model_res_partner,gsos.group_gsos_user,1,0,0,0
+access_gsos_checklist_user,gsos.checklist.user,model_gsos_checklist,gsos.group_gsos_user,1,0,0,0
+access_gsos_checklist_mngr,gsos.checklist.mngr,model_gsos_checklist,gsos.group_gsos_manager,1,1,1,1
+access_gsos_invitation_user,gsos.invitation.user,model_gsos_invitation,gsos.group_gsos_user,1,1,1,1
+access_gsos_industry_user,gsos.industry.user,model_gsos_industry,gsos.group_gsos_user,1,1,1,1
+access_gsos_audit_user,gsos.audit.user,model_gsos_audit_request,gsos.group_gsos_user,1,1,1,1
+access_gsos_complaint_user,gsos.complaint.user,model_gsos_complaint,gsos.group_gsos_user,1,1,1,1

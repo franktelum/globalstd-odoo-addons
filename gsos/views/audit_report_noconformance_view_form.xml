@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data>
+
+      <record id="gsos_audit_report_noconformance_view_form" model="ir.ui.view">
+         <field name="name">gsos.audit.report.noconformance.form</field>
+         <field name="model">gsos.audit.report.noconformance</field>
+         <field name="arch" type="xml">
+           <form string="Noconformances">
+              <header>
+                <field name="status" widget="statusbar" clickable="True" />
+              </header>
+              <sheet>
+                 <group>
+                   <group>
+                     <field name="name" />
+                     <field name="audit_id" />
+                     <field name="__last_update" string='Closed on' attrs="{'invisible': [('status', '!=', 'closed')]}" />
+                   </group>
+                   <group>
+                     <field name="question_id" />
+                     <field name="question_rating" required="True" />
+                   </group>
+                 </group>
+                 <group>
+                   <field name="question_text" />
+                   <field name="noconformance_description" string="Non Conformance" />
+                 </group>
+                 <notebook>
+                   <page string="Actions">
+                     <field name="action_ids">
+                       <tree editable="top">
+                         <field name="action" />
+                         <field name="responsible" />
+                         <field name="date_target" />
+                       </tree>
+                     </field>
+                   </page>
+                 </notebook>
+              </sheet>
+           </form>
+         </field>
+      </record>
+
+   </data>
+</openerp>

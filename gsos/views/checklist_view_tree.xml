@@ -7,9 +7,9 @@
          <field name="model">gsos.checklist</field>
          <field name="arch" type="xml">
             <tree string="Checklists" editable="top">
-               <field name="name"/>
-               <field name="template_url" widget="url"/>
-               <field name="user_id" groups="gsos.group_gsos_manager" />
+               <field name="name" required="True" />
+               <field name="template_url" widget="url" required="True" />
+               <field name="revision" required="True" />
             </tree>
          </field>
       </record>

@@ -7,8 +7,8 @@
          <field name="model">gsos.complaint</field>
          <field name="arch" type="xml">
             <graph string="Complaints by Severity">
-               <field name="severity"/>
-               <field name="supplier_id"/>
+               <field name="severity" type="row" />
+               <field name="supplier_id" type="row" />
             </graph>
          </field>
       </record>

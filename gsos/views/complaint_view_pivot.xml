@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data>
+
+      <record id="gsos_complaint_view_pivot" model="ir.ui.view">
+         <field name="name">gsos.complaint.pivot</field>
+         <field name="model">gsos.complaint</field>
+         <field name="arch" type="xml">
+            <pivot string="Complaints Summary">
+              <field name="supplier_id" type="row" />
+              <field name="severity" type="col" />
+            </pivot>
+         </field>
+      </record>
+
+   </data>
+</openerp>

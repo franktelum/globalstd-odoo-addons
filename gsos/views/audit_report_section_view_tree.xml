@@ -7,10 +7,8 @@
          <field name="model">gsos.audit.report.section</field>
          <field name="arch" type="xml">
             <tree>
-              <field name="supplier_id"/>
-              <field name="checklist_id"/>
-               <field name="name" string="Section"/>
-               <field name="score"/>
+              <field name="name" string="Section"/>
+              <field name="score" string="Score (%)"/>
             </tree>
          </field>
       </record>
