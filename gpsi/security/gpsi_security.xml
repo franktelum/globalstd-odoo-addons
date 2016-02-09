@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data noupdate="0">
+
+      <record id="module_category_gpsi" model="ir.module.category">
+         <field name="name">Gpsi</field>
+         <field name="description">Gpsi Application</field>
+         <field name="sequence">20</field>
+      </record>
+
+      <record id="group_gpsi_user" model="res.groups">
+         <field name="name">User</field>
+         <field name="category_id" ref="gpsi.module_category_gpsi"/>
+      </record>
+
+      <record id="group_gpsi_staff" model="res.groups">
+         <field name="name">Technical Staff</field>
+         <field name="category_id" ref="gpsi.module_category_gpsi"/>
+         <field name="implied_ids" eval="[(4, ref('gpsi.group_gpsi_user'))]"/>
+      </record>
+
+      <record id="group_gpsi_manager" model="res.groups">
+         <field name="name">Manager</field>
+         <field name="category_id" ref="gpsi.module_category_gpsi"/>
+         <field name="implied_ids" eval="[(4, ref('gpsi.group_gpsi_staff'))]"/>
+      </record>
+
+   </data>
+</openerp>

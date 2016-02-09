@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data>
+
+      <record id="gps_eventos_view_tree" model="ir.ui.view">
+         <field name="name">gps.eventos.view.tree</field>
+         <field name="model">gps.eventos</field>
+         <field name="help" type="html">
+             <p>
+                 Click to create a new event.
+             </p>
+         </field>
+         <field name="arch" type="xml">
+            <tree string="Events">
+               <field name="numero_trabajo" string="Job Number"/>
+               <field name="tipo_evento" string="Stage"/>
+               <field name="fecha_inicio" string="Start"/>
+               <field name="fecha_termino" string="End"/>
+               <field name="estado_evento" string="State"/>
+            </tree>
+         </field>
+      </record>
+
+   </data>
+</openerp>

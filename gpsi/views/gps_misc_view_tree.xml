@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data>
+
+     <record id="gps_ubicaciones_view_tree" model="ir.ui.view">
+        <field name="name">gps.ubicaciones.view.tree</field>
+        <field name="model">gps.ubicaciones</field>
+        <field name="help" type="html">
+            <p>
+                Click to create a new event.
+            </p>
+        </field>
+        <field name="arch" type="xml">
+           <tree string="Locations">
+              <field name="id" string="ID"/>
+              <field name="direccion" string="Address"/>
+           </tree>
+        </field>
+     </record>
+
+     <record id="gps_nacecodes_tree" model="ir.ui.view">
+        <field name="name">gps.nacecodes.view.tree</field>
+        <field name="model">gps.nacecode</field>
+        <field name="help" type="html">
+            <p>
+                Click to create a new NACE code.
+            </p>
+        </field>
+        <field name="arch" type="xml">
+           <tree string="NACE Codes">
+              <field name="nombre" string="Name"/>
+              <field name="description" string="Description"/>
+           </tree>
+        </field>
+     </record>
+
+     <record id="gps_no_conformidades_tree" model="ir.ui.view">
+        <field name="name">gps.noconformidades.view.tree</field>
+        <field name="model">gps.noconformidades</field>
+        <field name="help" type="html">
+            <p>
+                Click to create a new non conformance.
+            </p>
+        </field>
+        <field name="arch" type="xml">
+           <tree string="Non Conformances">
+             <field name="id_numero_trabajo" />
+             <field name="cliente_id" />
+             <field name="fecha_apertura" string="Start Date" />
+             <field name="in_site" string="In Site?" />
+           </tree>
+        </field>
+     </record>
+
+   </data>
+</openerp>

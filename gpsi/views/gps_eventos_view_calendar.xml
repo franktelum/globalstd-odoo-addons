@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data>
+
+      <record id="gps_eventos_view_calendar" model="ir.ui.view">
+         <field name="name">gps.eventos.calendar</field>
+         <field name="model">gps.eventos</field>
+         <field name="arch" type="xml">
+            <calendar string="Events" date_start="fecha_inicio" color="estado_evento">
+               <field name="numero_trabajo" />
+            </calendar>
+         </field>
+      </record>
+
+   </data>
+</openerp>

@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import application_form
-import audit_event
-import audit_standard
-import product
-import order_line
-import client
-import contract
-import quotation
+import gps_contratos
+import gps_eventos
+import gps_misc
+import res_partner
+import res_users

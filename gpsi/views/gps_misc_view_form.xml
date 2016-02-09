@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data>
+
+      <record id="gps_no_conformidades_view_form" model="ir.ui.view">
+         <field name="name">gps.noconformidades.form</field>
+         <field name="model">gps.noconformidades</field>
+         <field name="arch" type="xml">
+            <form string="Non Conformances">
+               <sheet>
+                  <div class="oe_title">
+                     <h1>
+                        <field name="id_numero_trabajo" readonly="1"/>
+                     </h1>
+                  </div>
+                  <group>
+                    <group>
+                      <field name="numero_trabajo_id" string="Event" />
+                      <field name="cliente_id" string="Client" />
+                      <field name="in_site" string="In Site?" />
+                    </group>
+                    <group>
+                      <field name="fecha_apertura" string="Start on" />
+                      <field name="fecha_cierre" string="Close on" />
+                      <field name="fecha_cambio" string="Changed on" />
+                    </group>
+                  </group>
+                  <group>
+                     <field name="sentencia" string="Description" />
+                     <field name="contencion" string="Contention" />
+                     <field name="causa_raiz" string="Main Cause" />
+                     <field name="implementacion" string="Implementation" />
+                  </group>
+                  <group>
+                     <field name="notas" string="Notes" />
+                  </group>
+               </sheet>
+            </form>
+         </field>
+      </record>
+
+   </data>
+</openerp>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data>
+
+      <record id="gps_eventos_facturacion_view_tree" model="ir.ui.view">
+         <field name="name">gps.eventos.facturacion.view.tree</field>
+         <field name="model">gps.eventos.facturacion</field>
+         <field name="help" type="html">
+             <p>
+                 Click to create a new event facturation.
+             </p>
+         </field>
+         <field name="arch" type="xml">
+            <tree string="Events Facturation" editable="bottom">
+               <field name="numero_trabajo_id" string="Job Number"/>
+               <field name="usuario_id" string="User"/>
+               <field name="fecha_facturado" string="Billing Date"/>
+               <field name="estatus" string="Status"/>
+               <field name="pagado" string="Paid"/>
+               <field name="fecha_pagado" string="Payment Date"/>
+               <field name="comentarios" string="Comments"/>
+            </tree>
+         </field>
+      </record>
+
+   </data>
+</openerp>

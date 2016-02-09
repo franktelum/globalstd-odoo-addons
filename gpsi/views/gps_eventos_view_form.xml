@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data>
+
+     <record id="gps_noconformidades_view_search_form" model="ir.ui.view">
+         <field name="name">gps.noconformidades.search.form</field>
+         <field name="model">gps.noconformidades</field>
+         <field name="arch" type="xml">
+             <search string="Non Conformances">
+                 <field name="numero_trabajo_id" string="Event"></field>
+             </search>
+         </field>
+     </record>
+
+     <record id="act_gps_eventos_2_non_conformances_all" model="ir.actions.act_window">
+         <field name="name">Non Conformances</field>
+         <field name="res_model">gps.noconformidades</field>
+         <field name="view_mode">tree,form</field>
+         <field name="context">{
+           'search_default_numero_trabajo_id': [numero_trabajo_id],
+           'default_numero_trabajo_id': numero_trabajo_id,
+         }
+         </field>
+     </record>
+
+      <record id="gps_eventos_view_form" model="ir.ui.view">
+         <field name="name">gps.eventos.form</field>
+         <field name="model">gps.eventos</field>
+         <field name="arch" type="xml">
+            <form string="Events">
+              <header>
+                <field name="estado_evento" widget="statusbar" />
+              </header>
+               <sheet>
+                  <field name="id" invisible="1" />
+                  <div class="oe_button_box" name="button_box">
+                     <button class="oe_stat_button" name="%(act_gps_eventos_2_non_conformances_all)d" attrs="{'invisible':[('id','=', False)]}"
+                             context="{'numero_trabajo_id': id}" type="action" icon="fa-files-o">
+                         <field string="Non Conformances" name="no_conformidades_count" widget="statinfo"/>
+                     </button>
+                  </div>
+                  <div class="oe_title">
+                     <h1>
+                        <field name="numero_trabajo" readonly="1"/>
+                     </h1>
+                  </div>
+                  <group>
+                     <group>
+                        <field name="contrato_id" string="Contract" />
+                        <field name="cliente_id" string="Client" domain="[('customer','=','True')]" />
+                        <field name="habilidad_id" string="Standard" />
+                        <field name="tipo_evento" string="Type" />
+                     </group>
+                     <group>
+                        <field name="fecha_inicio" string="Start Date" />
+                        <field name="fecha_termino" string="End Date" />
+                        <field name="revisor_id" string="Reviewer" />
+                        <field name="comite_id" string="Committee" />
+                        <field name="client_service_id" string="Customer Service" />
+                     </group>
+                  </group>
+                  <group>
+                     <field name="comentarios" string="Comments" />
+                  </group>
+                  <notebook attrs="{'invisible': [('estado_evento', '=', 1)]}">
+                    <page string="Auditors">
+                      <field name="usuarios_evento_ids">
+                        <tree editable="bottom">
+                          <field name="usuario_id" />
+                          <field name="lider" string="Is Leader?" />
+                        </tree>
+                      </field>
+                    </page>
+                     <page string="Audit Plan &amp; Report">
+                        <group>
+                           <label string="This documents will be visible to the client." colspan="2" />
+                           <field name="archivo_plan_auditoria_id" string="Audit Plan" />
+                           <field name="archivo_reporte_auditoria_id" string="Audit Report" />
+                        </group>
+                     </page>
+                     <page string="Review">
+                        <group string="Documents">
+                          <field name="archivos_revisor_ids" nolabel="1" readonly="1">
+                            <tree>
+                              <field name="nombre" />
+                              <field name="fecha_registro" />
+                              <field name="tipo_archivo" />
+                            </tree>
+                          </field>
+                        </group>
+                        <group string="Notes">
+                           <field name="nota_auditor" string="Auditor's Note" colspan="4" />
+                        </group>
+                        <group>
+                           <field name="nota_revisor" string="Review's Note" colspan="4" />
+                        </group>
+                        <group>
+                           <field name="nota_comite" string="Committee's Note" colspan="4" />
+                        </group>
+                        <group col="4">
+                           <field name="estado_revisor" string="Status" colspan="2" />
+                           <newline/>
+                        </group>
+                     </page>
+                     <page string="Billing Information">
+                        <field name="eventos_facturacion_id">
+                          <tree editable="bottom">
+                             <field name="usuario_id" string="User"/>
+                             <field name="fecha_facturado" string="Billing Date"/>
+                             <field name="estatus" string="Status"/>
+                             <field name="pagado" string="Paid"/>
+                             <field name="fecha_pagado" string="Payment Date"/>
+                             <field name="comentarios" string="Comments"/>
+                          </tree>
+                        </field>
+                     </page>
+                  </notebook>
+               </sheet>
+               <div class="oe_chatter">
+                  <field name="message_follower_ids" widget="mail_followers"/>
+                  <field name="message_ids" widget="mail_thread"/>
+               </div>
+            </form>
+         </field>
+      </record>
+
+   </data>
+</openerp>

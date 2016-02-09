@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="gps_eventos_view_search_form" model="ir.ui.view">
+            <field name="name">gps.eventos.search.form</field>
+            <field name="model">gps.eventos</field>
+            <field name="arch" type="xml">
+                <search string="Events">
+                    <field name="contrato_id" string="Contract"></field>
+                </search>
+            </field>
+        </record>
+
+        <record id="act_gps_contract_2_event_all" model="ir.actions.act_window">
+            <field name="name">Events</field>
+            <field name="res_model">gps.eventos</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{
+              'search_default_contrato_id': [contrato_id],
+              'default_contrato_id': contrato_id,
+            }
+            </field>
+        </record>
+
+        <record id="gps_contratos_view_form" model="ir.ui.view">
+            <field name="name">gps.contratos.form</field>
+            <field name="model">gps.contratos</field>
+            <field name="arch" type="xml">
+                <form string="Contrats">
+                    <header>
+                        <field name="estado_revisor" widget="statusbar" />
+                    </header>
+                    <sheet>
+                        <field name="id" invisible="1" />
+                        <field name="ubicaciones_cliente_ids" invisible="1" />
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" name="%(act_gps_contract_2_event_all)d" attrs="{'invisible':[('id','=', False)]}"
+                                    context="{'contrato_id': id}" type="action" icon="fa-files-o">
+                                <field string="Events" name="event_count" widget="statinfo"/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="no_contrato" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="cliente_id" string="Client" required="True" domain="[('customer','=','True')]" />
+                                <field name="habilidad_id" string="Standard" />
+                                <field name="ventas_id" string="Salesperson" />
+                                <field name="revisor_id" string="Reviewer" />
+                            </group>
+                            <group>
+                                <field name="ap_diseno" string="Apply design?" />
+                                <field name="multisitio" string="Multisite?" />
+                                <field name="multilocate" string="Multilocate?" />
+                                <field name="bloquearcontrato" string="Block contract?" />
+                                <field name="bilingue" string="Bilingual auditor?" />
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                              <field name="ciclo_contrato" string="Cycle" />
+                              <field name="haccp" string="HACCP" />
+                            </group>
+                            <group>
+                                <field name="nivel_riesgo" string="Risk level" />
+                                <field name="aplica_viaticos" string="Expenses Invoice" />
+                            </group>
+                        </group>
+                        <group>
+                            <field name="notas" string="Notes" />
+                        </group>
+                        <group string="Events">
+                            <group>
+                                <field name="tipocertificacion" string="Certification type" required="True" />
+                                <field name="esquema" string="Scheme" required="True" />
+                                <field name="duracion" string="Duration" required="True" />
+                            </group>
+                            <group>
+                                <field name="report_time" string="Report time" />
+                                <field name="moneda_tipo" string="Currency" />
+                                <field name="moneda_tipo_cambio" string="Exchange rate" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Order Lines">
+                                <field name="eventos_contrato_ids" mode="tree" widget="one2many_list" nolabel="1" attrs="{'readonly': [('cliente_id', '=', False)]}">
+                                    <tree string="Order Lines" editable="bottom" default_order='tipo_evento_contrato'>
+                                        <field name="contrato_id" invisible="1" />
+                                        <field name="ubicacion_id" string="Location"
+                                          domain="[('id', 'in', parent.ubicaciones_cliente_ids[0][2])]" options="{'no_quick_create': True, 'no_create_edit': True}" />
+                                        <field name="tipo_evento_contrato" string="Service" />
+                                        <field name="dias" string="Days" />
+                                        <field name="costo" string="Cost" widget="monetary" />
+                                    </tree>
+                                </field>
+                                <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+                                  <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                    <label for="amount_total" />
+                                  </div>
+                                  <field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator" widget='monetary' />
+                                </group>
+                            </page>
+                            <page string="Documents">
+                              <group>
+                                <group>
+                                  <field name="archivo_rev_auditor_id" string="Audit Package" />
+                                </group>
+                                <group>
+                                  <field name="archivo_contrato_id" string="Sales Package" />
+                                </group>
+                              </group>
+                            </page>
+                            <page string="Certificate">
+                                <group col="4">
+                                    <field name="fechainicio" string="Certificate issue's date" />
+                                    <field name="estatus_certificado" string="Status" />
+                                    <field name="fechafin" string="Expiration date" />
+                                    <field name="archivo_certificado_id" string="File" />
+                                </group>
+                                <group>
+                                    <field name="informacion_avance" colspan="4" string="Scope" />
+                                </group>
+                            </page>
+                            <page string="NACE Codes">
+                                <field name="nacecodes_cliente_ids" attrs="{'readonly': [('cliente_id', '=', False)]}" />
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

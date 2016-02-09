@@ -1,74 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
    <data>
-      <act_window id="action_gpsi_sale_contracts"
+
+      ########################################################
+      # Contracts menu
+
+      <act_window id="action_gps_contratos"
          name="Contracts"
-         res_model="gpsi.contract"
+         res_model="gps.contratos"
          view_mode="tree,form">
       </act_window>
 
-      <act_window id="action_gpsi_sale_quotations"
-         name="Quotations"
-         res_model="gpsi.quotation"
-         view_mode="tree,form">
-      </act_window>
-
-      <act_window id="action_gpsi_audits"
-         name="Audits"
-         res_model="gpsi.audit.event"
-         view_mode="tree,form,calendar">
-      </act_window>
-
-      <act_window id="action_gpsi_standards"
-         name="Standards"
-         res_model="gpsi.audit.standard"
-         view_mode="tree,form">
-      </act_window>
-
-      <act_window id="action_gpsi_iafs"
-         name="IAFS"
-         res_model="gpsi.audit.iaf"
-         view_mode="tree,form">
-      </act_window>
-
-      <act_window id="action_gpsi_nace_codes"
-         name="NACE Codes"
-         res_model="gpsi.audit.nacecode"
-         view_mode="tree,form">
-      </act_window>
-
-      <act_window id="action_gpsi_products"
-         name="Products"
-         res_model="gpsi.product"
-         view_mode="tree,form">
-      </act_window>
-
-      <menuitem id="menu_gpsi_sale_quotations"
-         name="Quotations"
-         parent="base.menu_sales"
-         action="action_gpsi_sale_quotations"
-         sequence="20">
-      </menuitem>
-
-      <menuitem id="menu_gpsi_sale_contracts"
+      <menuitem id="menu_gps_contratos"
          name="Contracts"
          parent="base.menu_sales"
-         action="action_gpsi_sale_contracts"
-         sequence="21">
-      </menuitem>
-
-      <menuitem id="menu_gpsi_sale_config_products"
-         name="Products"
-         parent="base.menu_sale_config"
-         action="action_gpsi_products"
+         action="action_gps_contratos"
          sequence="20">
       </menuitem>
 
       ########################################################
-      # Audits menu
+
+      ########################################################
+      # Audit menu
+
+      <act_window id="action_gpsi_events"
+         name="Events"
+         res_model="gps.eventos"
+         view_mode="tree,form,calendar">
+      </act_window>
 
       <menuitem id="menu_gpsi_audits"
-         name="Audits"
+         name="Operation Management"
          sequence="20">
       </menuitem>
 
@@ -78,47 +40,298 @@
          sequence="1">
       </menuitem>
 
+      <menuitem id="menu_gpsi_audits_audits_contracts"
+         name="Contracts"
+         parent="menu_gpsi_audits_audits"
+         action="action_gps_contratos"
+         sequence="1">
+      </menuitem>
+
       <menuitem id="menu_gpsi_audits_audits_events"
          name="Events"
          parent="menu_gpsi_audits_audits"
-         action="action_gpsi_audits"
+         action="action_gpsi_events"
          sequence="1">
       </menuitem>
 
       ########################################################
-      # Configuration submenu
 
-      <menuitem id="menu_gpsi_audits_configuration"
-         name="Configuration"
-         parent="menu_gpsi_audits"
-         sequence="2">
+      ########################################################
+      # GPS menu para administradores
+
+      <menuitem id="menu_settings_gps"
+         name="GPS"
+         parent="base.menu_administration"
+         sequence="8">
       </menuitem>
 
-      <menuitem id="menu_gpsi_audits_configuration_catalogs"
-         name="Catalogs"
-         parent="menu_gpsi_audits_configuration"
-         sequence="1">
+      <menuitem id="menu_settings_gps_tables"
+         name="Tables"
+         parent="menu_settings_gps">
       </menuitem>
 
-      <menuitem id="menu_gpsi_audits_configuration_standards"
-         name="Standards"
-         parent="menu_gpsi_audits_configuration_catalogs"
-         action="action_gpsi_standards"
-         sequence="1">
+      <act_window id="action_gps_contratos"
+         name="gps.contratos"
+         res_model="gps.contratos"
+         view_mode="tree,form">
+      </act_window>
+
+      <menuitem id="menu_settings_gps_contratos"
+         name="gps.contratos"
+         parent="menu_settings_gps_tables"
+         action="action_gps_contratos">
       </menuitem>
 
-      <menuitem id="menu_gpsi_audits_configuration_iafs"
-         name="IAFS"
-         parent="menu_gpsi_audits_configuration_catalogs"
-         action="action_gpsi_iafs"
-         sequence="2">
+      <act_window id="action_gps_eventos"
+         name="gps.eventos"
+         res_model="gps.eventos"
+         view_mode="tree,form">
+      </act_window>
+
+      <menuitem id="menu_settings_gps_eventos"
+         name="gps.eventos"
+         parent="menu_settings_gps_tables"
+         action="action_gps_eventos">
       </menuitem>
 
-      <menuitem id="menu_gpsi_audits_configuration_nace_codes"
-         name="NACE Codes"
-         parent="menu_gpsi_audits_configuration_catalogs"
-         action="action_gpsi_nace_codes"
-         sequence="3">
+      <act_window id="action_gps_eventos_facturacion"
+         name="gps.eventos.facturacion"
+         res_model="gps.eventos.facturacion"
+         view_mode="tree,form">
+      </act_window>
+
+      <menuitem id="menu_settings_gps_eventos_facturacion"
+         name="gps.eventos.facturacion"
+         parent="menu_settings_gps_tables"
+         action="action_gps_eventos_facturacion">
+      </menuitem>
+
+      <act_window id="action_gps_eventos_contrato"
+         name="gps.eventos.contrato"
+         res_model="gps.eventos.contrato"
+         view_mode="tree,form">
+      </act_window>
+
+      <menuitem id="menu_settings_gps_eventos_contrato"
+         name="gps.eventos.contrato"
+         parent="menu_settings_gps_tables"
+         action="action_gps_eventos_contrato">
+      </menuitem>
+
+      <act_window id="action_gps_habilidades"
+         name="gps.habilidades"
+         res_model="gps.habilidades"
+         view_mode="tree,form">
+      </act_window>
+
+      <menuitem id="menu_settings_gps_habilidades"
+         name="gps.habilidades"
+         parent="menu_settings_gps_tables"
+         action="action_gps_habilidades">
+      </menuitem>
+
+      <act_window id="action_gps_nace_codes"
+         name="gps.nacecode"
+         res_model="gps.nacecode"
+         view_mode="tree,form">
+      </act_window>
+
+      <menuitem id="menu_settings_gps_nace_codes"
+         name="gps.nacecode"
+         parent="menu_settings_gps_tables"
+         action="action_gps_nace_codes">
+      </menuitem>
+
+      <act_window id="action_gps_nace_codes_cliente"
+         name="gps.nacecodes.cliente"
+         res_model="gps.nacecodes.cliente"
+         view_mode="tree,form">
+      </act_window>
+
+      <menuitem id="menu_settings_gps_nace_codes_cliente"
+         name="gps.nacecodes.cliente"
+         parent="menu_settings_gps_tables"
+         action="action_gps_nace_codes_cliente">
+      </menuitem>
+
+      <act_window id="action_gps_no_conformidades"
+         name="gps.noconformidades"
+         res_model="gps.noconformidades"
+         view_mode="tree,form">
+      </act_window>
+
+      <menuitem id="menu_settings_gps_no_conformidades"
+         name="gps.noconformidades"
+         parent="menu_settings_gps_tables"
+         action="action_gps_no_conformidades">
+      </menuitem>
+
+      <act_window id="action_gps_country_states"
+         name="res.country.state"
+         res_model="res.country.state"
+         view_mode="tree,form">
+      </act_window>
+
+      <menuitem id="menu_settings_gps_country_states"
+         name="res.country.state"
+         parent="menu_settings_gps_tables"
+         action="action_gps_country_states">
+      </menuitem>
+
+      <act_window id="action_gps_country_ciudades"
+         name="gps.city"
+         res_model="gps.city"
+         view_mode="tree,form">
+      </act_window>
+
+      <menuitem id="menu_settings_gps_country_ciudades"
+         name="gps.city"
+         parent="menu_settings_gps_tables"
+         action="action_gps_country_ciudades">
+      </menuitem>
+
+      <act_window id="action_gps_ubicaciones"
+         name="gps.ubicaciones"
+         res_model="gps.ubicaciones"
+         view_mode="tree,form">
+      </act_window>
+
+      <menuitem id="menu_settings_gps_ubicaciones"
+         name="gps.ubicaciones"
+         parent="menu_settings_gps_tables"
+         action="action_gps_ubicaciones">
+      </menuitem>
+
+      <act_window id="action_gps_ubicaciones_cliente"
+         name="gps.ubcaciones.cliente"
+         res_model="gps.ubicaciones.cliente"
+         view_mode="tree,form">
+      </act_window>
+
+      <menuitem id="menu_settings_gps_ubicaciones_cliente"
+         name="gps.ubicaciones.cliente"
+         parent="menu_settings_gps_tables"
+         action="action_gps_ubicaciones_cliente">
+      </menuitem>
+
+      <act_window id="action_gps_ubicaciones_contrato"
+         name="gps.ubcaciones.contrato"
+         res_model="gps.ubicaciones.contrato"
+         view_mode="tree,form">
+      </act_window>
+
+      <menuitem id="menu_settings_gps_ubicaciones_contrato"
+         name="gps.ubcaciones.contrato"
+         parent="menu_settings_gps_tables"
+         action="action_gps_ubicaciones_contrato">
+      </menuitem>
+
+      <act_window id="action_gps_oficinas"
+         name="gps.oficinas"
+         res_model="gps.oficinas"
+         view_mode="tree,form">
+      </act_window>
+
+      <menuitem id="menu_settings_gps_oficinas"
+         name="gps.oficinas"
+         parent="menu_settings_gps_tables"
+         action="action_gps_oficinas">
+      </menuitem>
+
+      <act_window id="action_gps_certificacion_tipo"
+         name="gps.certificacion.tipo"
+         res_model="gps.certificacion.tipo"
+         view_mode="tree,form">
+      </act_window>
+
+      <menuitem id="menu_settings_gps_certificacion_tipo"
+         name="gps.certificacion.tipo"
+         parent="menu_settings_gps_tables"
+         action="action_gps_certificacion_tipo">
+      </menuitem>
+
+      <act_window id="action_gps_fuente"
+         name="gps.fuente"
+         res_model="gps.fuente"
+         view_mode="tree,form">
+      </act_window>
+
+      <menuitem id="menu_settings_gps_fuente"
+         name="gps.fuente"
+         parent="menu_settings_gps_tables"
+         action="action_gps_fuente">
+      </menuitem>
+
+      <act_window id="action_gps_recommended"
+         name="gps.recommended"
+         res_model="gps.recommended"
+         view_mode="tree,form">
+      </act_window>
+
+      <menuitem id="menu_settings_gps_recommended"
+         name="gps.recommended"
+         parent="menu_settings_gps_tables"
+         action="action_gps_recommended">
+      </menuitem>
+
+      <act_window id="action_gps_usuarios_evento"
+         name="gps.usuarios.evento"
+         res_model="gps.usuarios.evento"
+         view_mode="tree,form">
+      </act_window>
+
+      <menuitem id="menu_settings_gps_usuarios_evento"
+         name="gps.usuarios.evento"
+         parent="menu_settings_gps_tables"
+         action="action_gps_usuarios_evento">
+      </menuitem>
+
+      <act_window id="action_gps_noconformidades"
+         name="gps.noconformidades"
+         res_model="gps.noconformidades"
+         view_mode="tree,form">
+      </act_window>
+
+      <menuitem id="menu_settings_gps_noconformidades"
+         name="gps.noconformidades"
+         parent="menu_settings_gps_tables"
+         action="action_gps_noconformidades">
+      </menuitem>
+
+      <act_window id="action_gps_archivos_evento"
+         name="gps.archivos.evento"
+         res_model="gps.archivos.evento"
+         view_mode="tree,form">
+      </act_window>
+
+      <menuitem id="menu_settings_gps_archivos_evento"
+         name="gps.archivos.evento"
+         parent="menu_settings_gps_tables"
+         action="action_gps_archivos_evento">
+      </menuitem>
+
+      <act_window id="action_gps_archivos"
+         name="gps.archivos"
+         res_model="gps.archivos"
+         view_mode="tree,form">
+      </act_window>
+
+      <menuitem id="menu_settings_gps_archivos"
+         name="gps.archivos"
+         parent="menu_settings_gps_tables"
+         action="action_gps_archivos">
+      </menuitem>
+
+      <act_window id="action_gps_archivos_tracking"
+         name="gps.archivos.tracking"
+         res_model="gps.archivos.tracking"
+         view_mode="tree,form">
+      </act_window>
+
+      <menuitem id="menu_settings_gps_archivos_tracking"
+         name="gps.archivos.tracking"
+         parent="menu_settings_gps_tables"
+         action="action_gps_archivos_tracking">
       </menuitem>
 
       ########################################################

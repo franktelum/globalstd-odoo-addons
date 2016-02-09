@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data>
+
+      <record id="gps_contratos_view_tree" model="ir.ui.view">
+         <field name="name">gps.contratos.view.tree</field>
+         <field name="model">gps.contratos</field>
+         <field name="help" type="html">
+             <p>
+                 Click to create a new contract.
+             </p>
+         </field>
+         <field name="arch" type="xml">
+            <tree string="Contracts">
+               <field name="no_contrato" string="Code"/>
+               <field name="habilidad_id" string="Standard"/>
+               <field name="ciclo_contrato" string="Cycle"/>
+               <field name="fecha_contrato" string="Signed"/>
+               <field name="bilingue" string="Bilingual"/>
+               <field name="tipocertificacion" string="Type"/>
+            </tree>
+         </field>
+      </record>
+
+   </data>
+</openerp>
