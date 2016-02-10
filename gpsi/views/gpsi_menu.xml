@@ -5,7 +5,7 @@
       ########################################################
       # Contracts menu
 
-      <act_window id="action_gps_contratos"
+      <act_window id="action_gpsi_contracts"
          name="Contracts"
          res_model="gps.contratos"
          view_mode="tree,form">
@@ -14,7 +14,8 @@
       <menuitem id="menu_gps_contratos"
          name="Contracts"
          parent="base.menu_sales"
-         action="action_gps_contratos"
+         action="action_gpsi_contracts"
+         groups="group_gpsi_user"
          sequence="20">
       </menuitem>
 
@@ -31,6 +32,7 @@
 
       <menuitem id="menu_gpsi_audits"
          name="Operation Management"
+         groups="group_gpsi_manager"
          sequence="20">
       </menuitem>
 

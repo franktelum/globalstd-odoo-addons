@@ -13,6 +13,7 @@
     'depends' : ['mail'],
     'data': [
         'security/gpsi_security.xml',
+        'security/ir.model.access.csv',
         'views/gpsi_menu.xml',
         'views/gps_contratos_view_form.xml',
         'views/gps_contratos_view_tree.xml',

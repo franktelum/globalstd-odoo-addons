@@ -39,7 +39,7 @@ class GpsMigrationCntlr(http.Controller):
             users = request.env['res.users'].search([('gpsi_id_user', '=', contrato.id_revisor)])
             contrato.revisor_id = users and users[0].id or False
 
-            if not evento.id_archivo_contrato:
+            if contrato.id_archivo_contrato:
                 contrato.archivo_contrato_id = request.env['ir.attachment'].create({
                     'res_model': 'gps.contratos',
                     'res_id': contrato.id,
@@ -47,7 +47,7 @@ class GpsMigrationCntlr(http.Controller):
                     'type': 'url',
                     'url': 'http://gps.globalstd.com/Documentos/%s/%s' % (contrato.no_contrato or '', contrato.id_archivo_contrato or '')})
 
-            if not evento.id_archivo_rev_auditor:
+            if contrato.id_archivo_rev_auditor:
                 contrato.archivo_rev_auditor_id = request.env['ir.attachment'].create({
                     'res_model': 'gps.contratos',
                     'res_id': contrato.id,
@@ -55,7 +55,7 @@ class GpsMigrationCntlr(http.Controller):
                     'type': 'url',
                     'url': 'http://gps.globalstd.com/Documentos/%s/%s' % (contrato.no_contrato or '', contrato.id_archivo_rev_auditor or '')})
 
-            if not evento.id_archivo_certificado:
+            if contrato.id_archivo_certificado:
                 contrato.archivo_certificado_id = request.env['ir.attachment'].create({
                     'res_model': 'gps.contratos',
                     'res_id': contrato.id,
@@ -91,7 +91,7 @@ class GpsMigrationCntlr(http.Controller):
             evento.ubicacion_id = ubicaciones and ubicaciones[0].id or False
 
             no_contrato = contratos and contratos[0].no_contrato or False
-            if not evento.id_archivo_plan_auditoria:
+            if evento.id_archivo_plan_auditoria:
                 evento.archivo_plan_auditoria_id = request.env['ir.attachment'].create({
                     'res_model': 'gps.eventos',
                     'res_id': evento.id,
@@ -99,7 +99,7 @@ class GpsMigrationCntlr(http.Controller):
                     'type': 'url',
                     'url': 'http://gps.globalstd.com/Documentos/%s/%s/%s' % (no_contrato or '', evento.numero_trabajo or '', evento.id_archivo_plan_auditoria or '')})
 
-            if not evento.id_archivo_reporte_auditoria:
+            if evento.id_archivo_reporte_auditoria:
                 evento.archivo_reporte_auditoria_id = request.env['ir.attachment'].create({
                     'res_model': 'gps.eventos',
                     'res_id': evento.id,
