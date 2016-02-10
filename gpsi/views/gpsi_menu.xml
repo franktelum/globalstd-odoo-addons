@@ -45,7 +45,7 @@
       <menuitem id="menu_gpsi_audits_audits_contracts"
          name="Contracts"
          parent="menu_gpsi_audits_audits"
-         action="action_gps_contratos"
+         action="action_gpsi_contracts"
          sequence="1">
       </menuitem>
 
