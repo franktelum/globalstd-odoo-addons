@@ -5,7 +5,7 @@ access_gps_eventos_contrato_user,gps.eventos.contrato.user,model_gps_eventos_con
 access_gps_nacecode_user,gps.nacecode.user,model_gps_nacecode,gpsi.group_gpsi_user,1,0,0,0
 access_gps_archivos_tracking_user,gps.archivos.tracking.user,model_gps_archivos_tracking,gpsi.group_gpsi_user,1,0,0,0
 access_gps_usuarios_evento_user,gps.usuarios.evento.user,model_gps_usuarios_evento,gpsi.group_gpsi_user,1,0,0,0
-access_gps_eventos_facturacion_user,gps.evento_facturacion.user,model_gps_eventos_facturacion,gpsi.group_gpsi_user,1,0,0,0
+access_gps_eventos_facturacion_user,gps.evento.facturacion.user,model_gps_eventos_facturacion,gpsi.group_gpsi_user,1,0,0,0
 access_gps_noconformidades_user,gps.noconformidades.user,model_gps_noconformidades,gpsi.group_gpsi_user,1,0,0,0
 access_gps_ubicaciones_user,gps.ubicaciones.user,model_gps_ubicaciones,gpsi.group_gpsi_user,1,0,0,0
 access_gps_habilidades_user,gps.habilidades.user,model_gps_habilidades,gpsi.group_gpsi_user,1,0,0,0

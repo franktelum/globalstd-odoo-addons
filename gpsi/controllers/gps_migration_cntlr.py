@@ -45,7 +45,7 @@ class GpsMigrationCntlr(http.Controller):
                     'res_id': contrato.id,
                     'name': '%s' % (contrato.id_archivo_contrato or 'Sales Package'),
                     'type': 'url',
-                    'url': 'http://gps.globalstd.com/Documentos/%s/%s' % (contrato.no_contrato or '', contrato.id_archivo_contrato or '')})
+                    'url': 'http://gps.globalstd.com/documentos/%s/%s' % (contrato.no_contrato or '', contrato.id_archivo_contrato or '')})
 
             if contrato.id_archivo_rev_auditor:
                 contrato.archivo_rev_auditor_id = request.env['ir.attachment'].create({
@@ -53,7 +53,7 @@ class GpsMigrationCntlr(http.Controller):
                     'res_id': contrato.id,
                     'name': '%s' % (contrato.id_archivo_rev_auditor or 'Audit Review'),
                     'type': 'url',
-                    'url': 'http://gps.globalstd.com/Documentos/%s/%s' % (contrato.no_contrato or '', contrato.id_archivo_rev_auditor or '')})
+                    'url': 'http://gps.globalstd.com/documentos/%s/%s' % (contrato.no_contrato or '', contrato.id_archivo_rev_auditor or '')})
 
             if contrato.id_archivo_certificado:
                 contrato.archivo_certificado_id = request.env['ir.attachment'].create({
@@ -61,7 +61,7 @@ class GpsMigrationCntlr(http.Controller):
                     'res_id': contrato.id,
                     'name': '%s' % (contrato.id_archivo_certificado or 'Certificate File'),
                     'type': 'url',
-                    'url': 'http://gps.globalstd.com/Documentos/%s' % (contrato.id_archivo_certificado or '')})
+                    'url': 'http://gps.globalstd.com/documentos/%s' % (contrato.id_archivo_certificado or '')})
 
             if contrato.moneda_tipo < 4:
                 contrato.moneda_tipo = contrato.moneda_tipo + 1
@@ -97,7 +97,7 @@ class GpsMigrationCntlr(http.Controller):
                     'res_id': evento.id,
                     'name': '%s' % (evento.id_archivo_plan_auditoria or 'Plan de Auditoría'),
                     'type': 'url',
-                    'url': 'http://gps.globalstd.com/Documentos/%s/%s/%s' % (no_contrato or '', evento.numero_trabajo or '', evento.id_archivo_plan_auditoria or '')})
+                    'url': 'http://gps.globalstd.com/documentos/%s/%s/%s' % (no_contrato or '', evento.numero_trabajo or '', evento.id_archivo_plan_auditoria or '')})
 
             if evento.id_archivo_reporte_auditoria:
                 evento.archivo_reporte_auditoria_id = request.env['ir.attachment'].create({
@@ -105,7 +105,7 @@ class GpsMigrationCntlr(http.Controller):
                     'res_id': evento.id,
                     'name': '%s' % (evento.id_archivo_reporte_auditoria or 'Reporte de auditoría'),
                     'type': 'url',
-                    'url': 'http://gps.globalstd.com/Documentos/%s/%s/%s' % (no_contrato or '', evento.numero_trabajo or '', evento.id_archivo_reporte_auditoria or '')})
+                    'url': 'http://gps.globalstd.com/documentos/%s/%s/%s' % (no_contrato or '', evento.numero_trabajo or '', evento.id_archivo_reporte_auditoria or '')})
 
         # gps.archivos
         archivos = request.env['gps.archivos'].search([])
@@ -204,9 +204,36 @@ class GpsMigrationCntlr(http.Controller):
 
     @http.route(route="/gps/migration/clients/new", type="json", auth="none", methods=['POST'])
     def create_client(self, **args):
-        if 'name' not in args:
-            return {'error': 'empty_name'}
-        return args['name']
+        newRecord = {
+            'company_type': 'company',
+            'customer': True,
+            'gpsi_id_oficina': args['IdOficina'],
+            'gpsi_cve_cliente': args['ClaveCliente'],
+            'name': args['NombreCliente'],
+            'street': args['Domicilio'],
+            'phone': args['Telefonos'],
+            'email': args['Correos'],
+            'gpsi_rfc': args['Rfc'],
+            'gpsi_domicilio_fiscal': args['DomicilioFiscal'],
+            'city': args['Ciudad'],
+            'zip': args['CP'],
+            'website': args['SitioWeb'],
+            'gpsi_no_empleados': args['NoEmpleados'],
+            'gpsi_id_referencia': args['IdReferencia'],
+            'active': args['Baja'],
+            'gpsi_id_cliente': args['IdCliente'],
+            'gpsi_perfil': args['Perfil'],
+            'gpsi_archivo_perfil': args['archivoPerfil'],
+            'gpsi_nick_name': args['NickName'],
+            'gpsi_password': args['Password'],
+            'gpsi_id_md5_qms': args['IdMD5QMS'],
+            'gpsi_id_ref_prog': args['IdRefProg'],
+            'gpsi_recommended': args['Recommended'],
+            'gpsi_id_leader_sales': args['IdLeaderSales'],
+            'gpsi_id_fuente': args['IdFuente']
+        }
+        request.env['res.partner'].sudo().create(newRecord)
+        return 'Done'
 
     @http.route(route="/gps/migration/clients/update", type="json", auth="none", methods=['POST'])
     def update_client(self, **args):

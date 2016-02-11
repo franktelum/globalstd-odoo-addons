@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-   <data>
+  <data>
 
-      <record id="gps_contratos_search_form" model="ir.ui.view">
-         <field name="name">gps.contratos.search.form</field>
-         <field name="model">gps.contratos</field>
-         <field name="arch" type="xml">
-           <search string="Contracts">
-             <field name="id_contrato" string="Contract" />
-             <field name="id_cliente" string="Client" />
-             <field name="no_contrato" string="Number Contract" />
-           </search>
-         </field>
-      </record>
+    <record id="gps_contratos_search_form" model="ir.ui.view">
+        <field name="name">gps.contratos.search.form</field>
+        <field name="model">gps.contratos</field>
+        <field name="arch" type="xml">
+            <search string="Contracts">
+                <field name="cliente_id" string="Client" />
+                <field name="no_contrato" string="Number Contract" />
+                <filter name="My Contracts" domain="[('ventas_id', '=', uid)]" />
+                <separator/>
+                <filter name="Draft" domain="[('estado_revisor', '=', 0)]" />
+                <filter name="Closed" domain="[('estado_revisor', '=', 3)]" />
+                <group expand="1" string="Group By">
+                    <filter string="Fecha" context="{'group_by':'fecha_contrato'}"/>
+                    <filter string="Status" context="{'group_by':'estado_revisor'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
 
-   </data>
+  </data>
 </openerp>

@@ -74,9 +74,9 @@
                         </group>
                         <group string="Events">
                             <group>
-                                <field name="tipocertificacion" string="Certification type" required="True" />
-                                <field name="esquema" string="Scheme" required="True" />
-                                <field name="duracion" string="Duration" required="True" />
+                                <field name="tipocertificacion" string="Certification type"  />
+                                <field name="esquema" string="Scheme" />
+                                <field name="duracion" string="Duration" />
                             </group>
                             <group>
                                 <field name="report_time" string="Report time" />
