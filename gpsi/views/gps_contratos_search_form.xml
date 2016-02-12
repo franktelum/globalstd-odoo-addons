@@ -11,12 +11,11 @@
                 <field name="no_contrato" string="Number Contract" />
                 <filter name="Actives" domain="[('vigente', '=', True)]"/>
                 <filter name="My Contracts" domain="[('ventas_id', '=', uid)]" />
-                <separator/>
-                <filter name="Draft" domain="[('estado_revisor', '=', 0)]" />
-                <filter name="Closed" domain="[('estado_revisor', '=', 3)]" />
                 <group expand="1" string="Group By">
-                    <filter string="Fecha" context="{'group_by':'fecha_contrato'}"/>
-                    <filter string="Status" context="{'group_by':'estado_revisor'}"/>
+                   <filter string="Standard" context="{'group_by':'habilidad_id'}"/>
+                   <filter string="Salesperson" context="{'group_by':'ventas_id'}"/>
+                   <filter string="Fecha" context="{'group_by':'fecha_contrato'}"/>
+                   <filter string="Status" context="{'group_by':'estado_revisor'}"/>
                 </group>
             </search>
         </field>
