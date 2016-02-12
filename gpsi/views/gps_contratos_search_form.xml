@@ -9,6 +9,7 @@
             <search string="Contracts">
                 <field name="cliente_id" string="Client" />
                 <field name="no_contrato" string="Number Contract" />
+                <filter name="Actives" domain="[('vigente', '=', True)]"/>
                 <filter name="My Contracts" domain="[('ventas_id', '=', uid)]" />
                 <separator/>
                 <filter name="Draft" domain="[('estado_revisor', '=', 0)]" />

@@ -18,6 +18,7 @@
                <field name="fecha_contrato" string="Signed"/>
                <field name="bilingue" string="Bilingual"/>
                <field name="tipocertificacion" string="Type"/>
+               <field name="vigente" string="Vigente"/>
             </tree>
          </field>
       </record>

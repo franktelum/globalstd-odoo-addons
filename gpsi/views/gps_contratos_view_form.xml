@@ -61,8 +61,9 @@
                         </group>
                         <group>
                             <group>
-                              <field name="ciclo_contrato" string="Cycle" />
-                              <field name="haccp" string="HACCP" />
+                               <field name="ciclo_contrato" string="Cycle" />
+                               <field name="haccp" string="HACCP" />
+                               <field name="no_empleados_compute" string="Number Employees" />
                             </group>
                             <group>
                                 <field name="nivel_riesgo" string="Risk level" />
@@ -71,6 +72,9 @@
                         </group>
                         <group>
                             <field name="notas" string="Notes" />
+                        </group>
+                        <group>
+                            <field name="informacion_avance" colspan="4" string="Scope" />
                         </group>
                         <group string="Events">
                             <group>
@@ -119,9 +123,6 @@
                                     <field name="estatus_certificado" string="Status" />
                                     <field name="fechafin" string="Expiration date" />
                                     <field name="archivo_certificado_id" string="File" />
-                                </group>
-                                <group>
-                                    <field name="informacion_avance" colspan="4" string="Scope" />
                                 </group>
                             </page>
                             <page string="NACE Codes">

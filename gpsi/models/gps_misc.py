@@ -431,9 +431,10 @@ class GpsMD5QMS(models.Model):
     _rec_name = 'num_empleados'
 
     id_md5qms = fields.Char(string='ID MD5QMS')
+    id_habilidad = fields.Char(string='Id Habilidad')
 
     num_empleados = fields.Char(string='Num Empleados')
-    dias_auditor = fields.Char(string='Dias Auditor')
+    dias_auditor = fields.Float(string='Dias Auditor')
 
 class GpsNaceCodesCliente(models.Model):
     _name = 'gps.nacecodes.cliente'

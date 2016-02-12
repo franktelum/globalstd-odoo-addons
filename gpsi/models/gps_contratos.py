@@ -131,12 +131,37 @@ class GpsContratos(models.Model):
     report_time = fields.Float(string='Report Time')
     event_count = fields.Integer(compute='_compute_event_count', string='Number events attached')
     amount_total = fields.Float(compute='_get_amount_total', string='Total')
+    no_empleados_compute = fields.Char(compute='_get_no_empleados', inverse='_set_no_empleados', string='Number employees')
+    no_empleados = fields.Char()
+    vigente = fields.Boolean(compute='_compute_vigente', string='Currently active')
 
     # Compute and search fields
     def _compute_event_count(self):
         self.ensure_one()
         events = self.env['gps.eventos'].search([['contrato_id', '=', self.id]])
         self.event_count = len(events)
+
+    @api.depends('no_empleados','cliente_id')
+    def _get_no_empleados(self):
+        self.ensure_one()
+        if not self.no_empleados:
+            clients = self.env['res.partner'].browse([self.cliente_id.id])
+            self.no_empleados_compute = clients[0].gpsi_no_empleados
+        else:
+            self.no_empleados_compute = self.no_empleados
+
+    @api.depends('no_empleados')
+    def _set_no_empleados(self):
+        self.ensure_one()
+        self.no_empleados = self.no_empleados_compute
+
+    @api.depends('cancelado','finalizado')
+    def _compute_vigente(self):
+        for contrato in self:
+            if (contrato.finalizado or contrato.cancelado):
+                contrato.vigente = False
+            else:
+                contrato.vigente = True
 
     @api.depends('archivo_certificado')
     def _get_archivo_certificado_url(self):
